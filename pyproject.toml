@@ -1,0 +1,56 @@
+[project]
+name = "secure-coding-mcp"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "mcp[cli]~=1.16.0",
+]
+
+[dependency-groups]
+dev = [
+    "isort~=6.1.0",
+    "mypy~=1.18.2",
+    "pytest~=8.4.2",
+    "ruff~=0.14.0",
+]
+
+[tool.mypy]
+python_version = "3.13"
+strict = true
+warn_unreachable = true
+
+[tool.ruff]
+line-length = 100
+show-fixes = true
+
+[tool.ruff.format]
+line-ending = "lf"
+docstring-code-format = true
+docstring-code-line-length = 80
+
+[tool.ruff.lint]
+fixable = ["ALL"]
+unfixable = []
+select = ["E4", "E7", "E9", "F", "S", "ASYNC", "B", "A", "C4", "LOG", "G", "PT", "SLF", "SIM", "PTH", "UP", "RUF", "TRY"]
+ignore = []
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+    "S101",  # Use of assert in tests is fine
+]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+known_first_party = ["secure_coding_mcp"]
+known_local_folder = ["tests"]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+default_section = "THIRDPARTY"
+skip_gitignore = true

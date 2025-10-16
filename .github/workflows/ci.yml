@@ -1,4 +1,7 @@
-name: Formatting and Linting
+name: Run CI
+
+permissions:
+  contents: read
 
 on:
   pull_request
@@ -46,3 +49,31 @@ jobs:
       run: |
         . .venv/bin/activate
         uv run mypy .
+
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v5
+
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.13'
+
+    - name: Install uv
+      env:
+        UV_VERSION: 0.9.2
+      run: |
+        curl -LsSf https://astral.sh/uv/${UV_VERSION}/install.sh | sh
+
+    - name: Create venv and install dependencies
+      run: |
+        uv venv
+        . .venv/bin/activate
+        uv sync
+
+    - name: Run tests (pytest)
+      run: |
+        . .venv/bin/activate
+        uv run pytest tests/

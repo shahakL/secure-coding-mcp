@@ -16,7 +16,7 @@ This is a Model Context Protocol (MCP) server designed to help AI agents write b
 
 ## Development Environment
 - Python version: >=3.13
-- Key dependency: mcp[cli] ~=1.16.0
+- Key dependency: mcp[cli]
 - Package and environment management: uv
 - Type checking: mypy with strict settings
 
@@ -83,10 +83,11 @@ This is a Model Context Protocol (MCP) server designed to help AI agents write b
 4. **Testing changes**
    - All code changes must be tested by running:
         ```bash
+        uv run ruff check .
+        uv run mypy .
+        uv run pytest tests
         uv run ruff format .
-        uv run isort src/ tests/
-        uv run ruff check src/ tests/
-        uv run pytest
+        uv run isort .
         ```
 
 

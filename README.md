@@ -1,4 +1,9 @@
 # secure-coding-mcp
+
+[![CI](https://github.com/shahakL/secure-coding-mcp/actions/workflows/ci.yml/badge.svg?event=push&branch=main)](https://github.com/shahakL/secure-coding-mcp/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.13-blue.svg)](https://www.python.org/downloads/release/python-3130/)
+
 Secure Coding MCP Server.
 
 This server helps AI agents write more secure code by guiding them through a structured
